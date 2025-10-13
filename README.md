@@ -36,25 +36,23 @@ XAMPP is a free and open-source cross-platform web server solution stack package
 ## 🚀 Features
 
 - ✅ Add, edit, and view patient details
-- ✅ Dental chart with selectable conditions (more common ones) for each tooth
+- ✅ Dental chart with selectable (more common) conditions for each tooth
 - ✅ Record patient visitations
 - ✅ View patient photos for each patient
 - ✅ Theme switching (light/dark) 🌞🌙
 - ✅ Responsive UI
 
-<!-- ---
+---
 
-## 📸 Demo
+## 📸 Preview images
+
+**Add New Patient**
+![Add New Patient](Previews/Add_new_patient.jpg)
+
+**Patient List**
+![Patient List](Previews/Patient_List.jpg)
 
 **Patient Details & Tooth Chart**
-![Patient Details](screenshots/patient_details.png)
-
-**Visitations Table**
-![Visitations](screenshots/visitations.png)
-
-**Patient Photos**
-![Patient Photos](screenshots/patient_photos.png)   -->
-
-> You can view screenshots of the app in the `screenshots/` folder.
+![Patient Details](Previews/Dental_Chart.jpg)
 
 ---
