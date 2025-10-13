@@ -14,7 +14,7 @@ Web application for managing patient records, dental charts, visitations.
 
 ---
 
-## 💻 Running Locally
+## 💻 Hosting
 
 This project runs on a local server environment such as **XAMPP**.
 
