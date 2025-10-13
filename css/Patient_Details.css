@@ -143,6 +143,12 @@
   margin-bottom: 1.5rem;
 }
 
+@media (max-width: 1300px) {
+  .teeth{
+    flex-direction: column;
+  }
+}
+
 .quadrant {
   display: flex;
   gap: 0.3rem;

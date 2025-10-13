@@ -21,21 +21,21 @@
 </head>
 <body>
   <nav class="navbar">
-    <a href="Patients_List.php" class="nav-item active"><i class='bx bx-group'></i><span>Пациенти</span></a>
-    <button id="theme-toggle" class="nav-item" aria-label="Смяна на цветова тема" >
+    <a href="Patients_List.php" class="nav-item active"><i class='bx bx-group'></i><span>Patients</span></a>
+    <button id="theme-toggle" class="nav-item" aria-label="Theme switch" >
       <i class='bx bx-moon'></i>
     </button>
   </nav>
 
   <div class="filter-bar" aria-label="Filters">
-    <input type="text" id="searchInput" placeholder="Търсене по име..." autocomplete="off" />
+    <input type="text" id="searchInput" placeholder="Search by name..." autocomplete="off" />
     <button class="add-btn" onclick="location.href='Add_Patient.php'"><i class='bx bx-plus'></i></button>
   </div>
 
   <!-- Grid container where JS will render cards -->
   <main id="patientsDisplay" aria-live="polite"></main>
 
-  <p id="noResults">Няма резултати за търсенето.</p>
+  <p id="noResults">There are no patients.</p>
 
   <noscript>
     <!-- Fallback: server-side rendering if JS is disabled -->
@@ -51,11 +51,11 @@
               <span><?= htmlspecialchars($row['gender']) ?></span>
               <span><?= htmlspecialchars($row['age']) ?>г.</span>
             </div>
-            <div class="phone"><strong>Тел:</strong> <?= htmlspecialchars($row['phone']) ?></div>
-            <button onclick="location.href='Patient_Details.php?id=<?= urlencode($row['id']) ?>'">Детайли -></button>
+            <div class="phone"><strong>Phone:</strong> <?= htmlspecialchars($row['phone']) ?></div>
+            <button onclick="location.href='Patient_Details.php?id=<?= urlencode($row['id']) ?>'">Details -></button>
           </div>
       <?php endwhile; else: ?>
-        <p>Няма пациенти.</p>
+        <p>There are no patients.</p>
       <?php endif; ?>
     </main>
   </noscript>

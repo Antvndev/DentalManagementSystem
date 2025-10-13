@@ -1,18 +1,26 @@
 <?php include 'config.php'; ?>
 
 <?php
-// Reset patients if button is pressed
+// Reset entire DB info if button is pressed
 if (isset($_POST['reset_patients'])) {
-    $sql = "TRUNCATE TABLE patients";
-    if ($conn->query($sql) === TRUE) {
-        header("Location: Patients_List.php");
-        echo "✅ All patients have been cleared!";
-        exit();
-    } else {
-        echo "❌ Error: " . $conn->error;
-    }
+
+    // Delete dependent tables first
+    $conn->query("DELETE FROM dental_chart");
+    $conn->query("ALTER TABLE dental_chart AUTO_INCREMENT = 1");
+
+    $conn->query("DELETE FROM visitations");
+    $conn->query("ALTER TABLE visitations AUTO_INCREMENT = 1");
+
+    // Now delete patients
+    $conn->query("DELETE FROM patients");
+    $conn->query("ALTER TABLE patients AUTO_INCREMENT = 1");
+
+    header("Location: Patients_List.php");
+    exit();
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+// Add a new patient
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['reset_patients'])) {
     $first  = $_POST['first_name'];
     $middle = $_POST['middle_name'];
     $last   = $_POST['last_name'];
@@ -31,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light"> 
@@ -59,24 +68,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button onclick="location.href='Patients_List.php'" class="back-btn">
                 <i class='bx bx-left-arrow-alt'></i>
             </button>
-            <h2>Нов Пациент</h2>
-            <input type="text" name="first_name" placeholder="Име" required><br><br>
-            <input type="text" name="middle_name" placeholder="През Име"><br><br>
-            <input type="text" name="last_name" placeholder="Фамилия" required><br><br>
+            <h2>New Patient</h2>
+            <input type="text" name="first_name" placeholder="First name" required><br><br>
+            <input type="text" name="middle_name" placeholder="Middle name"><br><br>
+            <input type="text" name="last_name" placeholder="Last name" required><br><br>
             <div class="gender-row">
-                <label for="male">Мъж
-                <input type="radio" id="male" name="gender" value="Мъж" required>
+                <label for="male">Male
+                <input type="radio" id="male" name="gender" value="Male" required>
                 </label>
-                <label for="female">Жена
-                <input type="radio" id="female" name="gender" value="Жена">
+                <label for="female">Female
+                <input type="radio" id="female" name="gender" value="Female">
                 </label>
             </div>
-            <input type="number" name="age" placeholder="Възраст" min="0" max="120" required>
-            <input type="text" name="phone" placeholder="Телефонен номер"><br><br>
-            <button type="submit">Добави Пациент</button>
-            <button type="submit" name="reset_patients" class="reset-btn">
+            <input type="number" name="age" placeholder="Age" min="0" max="120" required>
+            <input type="text" name="phone" placeholder="Phone number"><br><br>
+            <button type="submit">Add Patient</button>
+            <!-- <button type="submit" name="reset_patients" class="reset-btn">
                 🔄 Reset Patients (Dev Only)
-            </button>
+            </button> -->
         </form>
     </body>
 </html>

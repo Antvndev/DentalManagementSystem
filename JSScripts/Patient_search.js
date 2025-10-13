@@ -33,13 +33,13 @@
       const phoneDiv = document.createElement('span');
       phoneDiv.className = 'phone';
       const strong = document.createElement('strong');
-      strong.textContent = 'Тел: ';
+      strong.textContent = 'Phone: ';
       phoneDiv.appendChild(strong);
       phoneDiv.appendChild(document.createTextNode(p.phone || ''));
       card.appendChild(phoneDiv);
 
       const detailsBtn = document.createElement('button');
-      detailsBtn.textContent = 'Детайли ->';
+      detailsBtn.textContent = 'Details ->';
       detailsBtn.onclick = () => {
         location.href = 'Patient_Details.php?id=' + encodeURIComponent(p.id || '');
       };

@@ -102,8 +102,8 @@ HTML;
       <h1><?= htmlspecialchars($patient['first_name'] . ' ' . $patient['middle_name'] . ' ' . $patient['last_name']) ?></h1>
 
       <div class="Tab-Bar">
-        <button class="Tab-Link" onclick="openTab(event, 'PatientChart')">Лечебен Картон</button>
-        <button class="Tab-Link" onclick="openTab(event, 'Photos')">Снимки</button>
+        <button class="Tab-Link" onclick="openTab(event, 'PatientChart')">Patient Chart</button>
+        <button class="Tab-Link" onclick="openTab(event, 'Photos')">Images</button>
       </div>
     </div>
 
@@ -114,7 +114,7 @@ HTML;
       
       <!-- Tooth Chart -->
       <section class="Tooth-Chart">
-        <h2>Зъбен Картон</h2>
+        <h2>Chart</h2>
 
         <!-- Upper row -->
         <div class="teeth upper">
@@ -171,53 +171,53 @@ HTML;
         </div>
 
         <div class="condition-toolbar">
-          <button class="condition" data-condition="caries">Кариес</button>
-          <button class="condition" data-condition="pulpitis">Пулпит</button>
-          <button class="condition" data-condition="periodontitis">Периодонтит</button>
-          <button class="condition" data-condition="periodontitis_gum">Пародонтит</button>
-          <button class="condition" data-condition="root">Корен</button>
-          <button class="condition" data-condition="obturate">Обтурация</button>
-          <button class="condition" data-condition="implant">Имплант</button>
-          <button class="condition" data-condition="fracture">Фрактура</button>
-          <button class="condition" data-condition="missing">Изваден</button>
-          <button class="condition" data-condition="crown">Коронка</button>
+          <button class="condition" data-condition="caries">Caries</button>
+          <button class="condition" data-condition="pulpitis">pulpitis</button>
+          <button class="condition" data-condition="periodontitis">periodontitis</button>
+          <button class="condition" data-condition="periodontitis_gum">periodontitis gum</button>
+          <button class="condition" data-condition="root">root</button>
+          <button class="condition" data-condition="obturate">obturate</button>
+          <button class="condition" data-condition="implant">implant</button>
+          <button class="condition" data-condition="fracture">fracture</button>
+          <button class="condition" data-condition="missing">missing</button>
+          <button class="condition" data-condition="crown">crown</button>
         </div>
         
-        <button class="condition" data-condition="clear">Изчисти</button>
-        <button id="save-chart" class="save-btn">Запази картата</button>
+        <button class="condition" data-condition="clear">clear</button>
+        <button id="save-chart" class="save-btn">Save</button>
       </section>
       <!-- END Tooth Chart -->
 
       <!-- Visitations -->
       <section class="Visitations-Section">
         <div class="visit-header">
-          <h2>Посещения</h2>
-          <button id="add-visit" class="add-btn"> + Ново посещение</button>
+          <h2>Visits</h2>
+          <button id="add-visit" class="add-btn"> + New visit</button>
         </div>
 
         <div id="visit-form-container" class="hidden">
           <form id="visit-form-horizontal" class="visit-form-horizontal">
             <input type="date" name="visit_date" value="<?= date('Y-m-d') ?>" required>
-            <input type="text" name="tooth_number" placeholder="Номер на зъб /и" required>
-            <input type="text" name="diagnosis" placeholder="Диагноза" required>
-            <input type="text" name="treatment" placeholder="Лечение">
-            <input type="text" name="procedure_used" placeholder="Процедура">
-            <input type="text" name="notes" placeholder="Забележки">
+            <input type="text" name="tooth_number" placeholder="Tooth number" required>
+            <input type="text" name="diagnosis" placeholder="Diagnosis" required>
+            <input type="text" name="treatment" placeholder="Treatment">
+            <input type="text" name="procedure_used" placeholder="Procedure">
+            <input type="text" name="notes" placeholder="Notes">
 
-            <button type="submit">Добави</button>
-            <button type="button" id="cancel-visit-btn">Отказ</button>
+            <button type="submit">Add</button>
+            <button type="button" id="cancel-visit-btn">Clear</button>
           </form>
         </div>
 
         <table class="visitation-table">
           <thead>
             <tr>
-              <th>Дата</th>
-              <th>Зъб</th>
-              <th>Диагноза</th>
-              <th>Лечение</th>
-              <th>Процедура</th>
-              <th>Забележки</th>
+              <th>Date</th>
+              <th>Tooth</th>
+              <th>Diagnosis</th>
+              <th>Treatment</th>
+              <th>Procedure</th>
+              <th>Notes</th>
             </tr>
           </thead>
           <tbody id="visits-body">
@@ -259,7 +259,7 @@ HTML;
                 echo "<img src='$imgPath' alt='Patient Photo' class='photo-thumb'>";
             }
         } else {
-            echo "<p>Няма качени снимки за този пациент.</p>";
+            echo "<p>There are no images for this patient.</p>";
         }
         ?>
       </div>
