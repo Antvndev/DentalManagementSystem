@@ -1,0 +1,447 @@
+/* ==========================
+   Theme Variables
+========================== */
+:root[data-theme="light"] {
+  --text: hsl(255, 20%, 8%);
+  --text-contrast: hsl(0, 0%, 100%);
+  --background: hsl(270, 33%, 99%);
+  --primary: hsl(255, 52%, 54%);
+  --secondary: hsl(255, 67%, 70%);
+  --accent: hsl(255, 83%, 64%);
+  --button-backgorund: hsl(0, 0%, 0%);
+  --button-color: hsl(0, 0%, 100%);
+  --shadow-color: hsl(0, 0%, 0%, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --text: hsl(255, 20%, 92%);
+  --text-contrast: hsl(0, 0%, 0%);
+  --background: hsl(300, 20%, 1%);
+  --primary: hsl(255, 52%, 46%);
+  --secondary: hsl(255, 67%, 30%);
+  --accent: hsl(255, 83%, 36%);
+  --button-backgorund: hsl(0, 0%, 100%);
+  --button-color: hsl(0, 0%, 0%);
+  --shadow-color: hsl(0, 0%, 99%, 0.1);
+}
+
+/* ==========================
+   Layout
+========================== */
+/* Header container as row */
+.Header {
+    display: flex;
+    align-items: flex-end;     /* vertically aligned to bottom */
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    max-width: 81dvw;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Back button as round circle */
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--button-backgorund);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--accent);
+    transform: scale(1.1);
+}
+.back-btn i{
+    color: var(--button-color);
+}
+/* Patient name aligned to the start (left) and grows to fill space) */
+.Header h1 {
+    margin: 0;
+    font-weight: 600;
+    flex-grow: 1; /* takes remaining horizontal space */
+}
+
+/* Layout container */
+.Tab-container {
+  max-width: 81dvw;
+  margin: 2rem auto;
+  background: var(--background);
+  border-radius: 1rem;
+  /* padding: 0.3rem 1rem; */
+  /* box-shadow: 0 4px 20px var(--shadow-color); */
+}
+/* Tabs bar */
+.Tab-Bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tab buttons */
+.Tab-Link {
+  padding: 0.6rem 1.2rem;
+  background: none;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--secondary);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.Tab-Link:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.Tab-Link.active {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--primary);
+  transform: scale(1.1);
+}
+
+/* Tab content */
+.Tab-Content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animation for smooth appearance */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Tooth Chart === */
+.Tooth-Chart {
+  max-width: 81dvw;
+  margin: 2rem auto;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: var(--background);
+  text-align: center;
+}
+
+.Tooth-Chart h2 {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* Teeth rows */
+.teeth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quadrant {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.mid-gap {
+  width: 2rem;
+  height: 2px;
+  background: var(--text);
+  opacity: 0.2;
+}
+
+/* Individual tooth */
+.tooth {
+  position: relative;
+  width: 49px;
+  height: 49px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 8px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.5rem;
+}
+
+.tooth:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Selected state before applying */
+.tooth.selected {
+  border: 2px solid var(--accent);
+  transform: scale(1.1);
+}
+
+/* Condition-based visuals */
+.tooth[data-condition="caries"] {
+  background: linear-gradient(145deg, #3b0a0a, #8b0000);
+  color: white;
+}
+.tooth[data-condition="crown"] {
+  background: linear-gradient(145deg, #d4af37, #b8860b);
+  color: #fff;
+}
+.tooth[data-condition="implant"] {
+  background: linear-gradient(145deg, #bdc3c7, #7f8c8d);
+}
+.tooth[data-condition="missing"] {
+  opacity: 0.4;
+}
+.tooth[data-condition="pulpitis"] {
+  background: #e67e22; /* orange */
+  color: #fff;
+}
+.tooth[data-condition="periodontitis"] {
+  background: #c0392b; /* dark red */
+  color: #fff;
+}
+.tooth[data-condition="periodontitis_gum"] {
+  background: #ffcc00; /* greenish for gum */
+  color: #fff;
+}
+.tooth[data-condition="root"] {
+  background: #7f8c8d; /* gray */
+  color: #fff;
+}
+.tooth[data-condition="obturate"] {
+  background: #f1c40f; /* yellow, like filling */
+  color: #000;
+}
+.tooth[data-condition="fracture"] {
+  background: #34495e; /* dark gray/blue */
+  color: #fff;
+}
+
+/* Small fixed button on top-right */
+.fixed-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  font-size: 0.7rem;
+  line-height: 16px;
+  text-align: center;
+  background: var(--button-backgorund);
+  color: var(--button-color);
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* only visible on hover */
+}
+
+.tooth:hover .fixed-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Big checkmark for fixed teeth */
+.tooth.fixed::after {
+  content: "✔";
+  position: absolute; 
+  z-index: 10; 
+  top: -0.8rem; 
+  width: 18px; 
+  height: 18px; 
+  border-radius: 50%; 
+  border: 1.6px solid black; 
+  background: var(--button-backgorund); 
+  color: var(--button-color); 
+  box-shadow: 0 0 2rem var(--shadow-color); 
+  font-size: 0.8rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+
+/* Toolbar */
+.condition-toolbar {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.condition {
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: 8px;
+  border: 1.6px solid var(--accent);
+  cursor: pointer;
+  transition: 0.2s ease, color 0.2s ease;
+}
+
+.condition[data-condition="caries"]:hover {
+  background: linear-gradient(145deg, #3b0a0a, #8b0000);
+  color: white;
+}
+.condition[data-condition="crown"]:hover {
+  background: linear-gradient(145deg, #d4af37, #b8860b);
+  color: #fff;
+}
+.condition[data-condition="implant"]:hover {
+  background: linear-gradient(145deg, #bdc3c7, #7f8c8d);
+}
+.condition[data-condition="pulpitis"]:hover {
+  background: #e67e22; /* orange */
+  color: #fff;
+}
+.condition[data-condition="periodontitis"]:hover {
+  background: #c0392b; /* dark red */
+  color: #fff;
+}
+.condition[data-condition="periodontitis_gum"]:hover {
+  background: #ffcc00; /* greenish for gum */
+  color: #fff;
+}
+.condition[data-condition="root"]:hover {
+  background: #7f8c8d; /* gray */
+  color: #fff;
+}
+.condition[data-condition="obturate"]:hover {
+  background: #f1c40f; /* yellow, like filling */
+  color: #000;
+}
+.condition[data-condition="fracture"]:hover {
+  background: #34495e; /* dark gray/blue */
+  color: #fff;
+}
+
+.save-btn {
+  margin-top: 1rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.save-btn:hover {
+  background: var(--accent);
+}
+
+.condition[data-condition="clear"] {
+  background: none;
+  color: var(--text);
+}
+.condition[data-condition="clear"], .save-btn{
+  margin-top: 2rem;
+}
+
+.Visitations-Section {
+  margin-top: 2rem;
+  background: var(--background);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.visit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.add-btn {
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  background: var(--accent);
+}
+
+.visitation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.visitation-table th,
+.visitation-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  max-width: 200px;
+}
+
+/* Hidden helper */
+.hidden {
+  display: none;
+}
+
+/* Horizontal form styling */
+.visit-form-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.visit-form-horizontal input {
+  flex: 1 1 120px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.visit-form-horizontal button[type="submit"] {
+  background: var(--accent);
+  color: var(--button-color);
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.visit-form-horizontal button[type="button"] {
+  background: #ccc;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: flex-start;
+}
+
+.photo-gallery img.photo-thumb {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.photo-gallery img.photo-thumb:hover {
+  transform: scale(1.05);
+}

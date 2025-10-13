@@ -1,0 +1,118 @@
+/* ==========================
+   Theme Variables
+========================== */
+:root[data-theme="light"] {
+  --text: hsl(255, 20%, 8%);
+  --text-contrast: hsl(0, 0%, 100%);
+  --background: hsl(270, 33%, 99%);
+  --primary: hsl(255, 52%, 54%);
+  --secondary: hsl(255, 67%, 70%);
+  --accent: hsl(255, 83%, 64%);
+  --button-backgorund: hsl(0, 0%, 0%);
+  --button-color: hsl(0, 0%, 100%);
+  --shadow-color: hsl(0, 0%, 0%, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --text: hsl(255, 20%, 92%);
+  --text-contrast: hsl(0, 0%, 0%);
+  --background: hsl(300, 20%, 1%);
+  --primary: hsl(255, 52%, 46%);
+  --secondary: hsl(255, 67%, 30%);
+  --accent: hsl(255, 83%, 36%);
+  --button-backgorund: hsl(0, 0%, 100%);
+  --button-color: hsl(0, 0%, 0%);
+  --shadow-color: hsl(0, 0%, 99%, 0.1);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100dvh;
+  padding: 2rem;
+}
+/* Back button as round circle */
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    position:absolute ;
+    background-color: var(--button-backgorund);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--accent);
+    transform: scale(1.1);
+}
+.back-btn i{
+    color: var(--button-color);
+}
+
+/* Form container */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; 
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px var(--secondary);
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--background);
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--secondary);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Gender row */
+.gender-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.gender-row label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+label + input[type="radio"]:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Submit button uses primary/contrast */
+form button {
+  background-color: var(--button-backgorund);
+  color: var(--button-color);
+}
+
+form button:hover {
+  background-color: var(--accent);
+  color: var(--button-color);
+}
