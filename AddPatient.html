@@ -27,7 +27,6 @@
     <input type="text" name="first_name" placeholder="First name" required><br><br>
     <input type="text" name="middle_name" placeholder="Middle name"><br><br>
     <input type="text" name="last_name" placeholder="Last name" required><br><br>
-
     <div class="gender-row">
       <label for="male">Male
         <input type="radio" id="male" name="gender" value="Male" required>
@@ -40,16 +39,15 @@
     <input type="number" name="age" placeholder="Age" min="0" max="120" required>
     <input type="text" name="phone" placeholder="Phone number"><br><br>
 
-    <button onclick="window.location.href='index.html'" type="submit">Add Patient</button>
+    <button type="submit">Add Patient</button>
   </form>
-
   <script src="JSScripts/ThemeSwitcher.js"></script>
   <script>
     // Fake functionality for static demo
     document.getElementById("patient-form").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("✅ Patient added (demo mode, no database).");
-      window.location.href = "patients_list.html";
+      window.location.href = "PatientsList.html";
     });
   </script>
 </body>
