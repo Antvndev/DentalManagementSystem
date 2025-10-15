@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved) document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/Patients_List.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <title>Patients List</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="patients_list.html" class="nav-item active">
+      <i class='bx bx-group'></i><span>Patients</span>
+    </a>
+    <button id="theme-toggle" class="nav-item" aria-label="Theme switch">
+      <i class='bx bx-moon'></i>
+    </button>
+  </nav>
+
+  <!-- Filter/search bar -->
+  <div class="filter-bar" aria-label="Filters">
+    <input type="text" id="searchInput" placeholder="Search by name..." autocomplete="off" />
+    <button class="add-btn" onclick="window.location.href='add_patient.html'">
+      <i class='bx bx-plus'></i>
+    </button>
+  </div>
+
+  <!-- Patient cards container -->
+  <main id="patientsDisplay" aria-live="polite"></main>
+  <p id="noResults" style="display:none;">There are no patients.</p>
+
+  <noscript>
+    <p>Please enable JavaScript to view patients.</p>
+  </noscript>
+
+  <script src="JSScripts/ThemeSwitcher.js"></script>
+
+  <script>
+    // --- Demo patient data (for static demo) ---
+    const demoPatients = [
+      {
+        id: 1,
+        first_name: "Test",
+        middle_name: "1",
+        last_name: "Dummy",
+        gender: "Female",
+        age: 37,
+        phone: "0888 123 456"
+      },
+      {
+        id: 2,
+        first_name: "Test",
+        middle_name: "2",
+        last_name: "Dummy",
+        gender: "Female",
+        age: 30,
+        phone: "0877 654 321"
+      },
+      {
+        id: 3,
+        first_name: "Test",
+        middle_name: "3",
+        last_name: "Dummy",
+        gender: "Male",
+        age: 44,
+        phone: "0899 111 222"
+      }
+    ];
+
+    const patientsDisplay = document.getElementById("patientsDisplay");
+    const searchInput = document.getElementById("searchInput");
+    const noResults = document.getElementById("noResults");
+
+    // Render patient cards
+    function renderPatients(patients) {
+      patientsDisplay.innerHTML = "";
+      if (patients.length === 0) {
+        noResults.style.display = "block";
+        return;
+      }
+      noResults.style.display = "none";
+
+      patients.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "mini-card";
+        card.innerHTML = `
+          <h3 class="patient-name">${p.first_name} ${p.middle_name} ${p.last_name}</h3>
+          <div class="info-row">
+            <span>${p.gender}</span>
+            <span>${p.age}г.</span>
+          </div>
+          <div class="phone"><strong>Телефон:</strong> ${p.phone}</div>
+          <button onclick="window.location.href='patient_details.html?id=${p.id}'">Детайли →</button>
+        `;
+        patientsDisplay.appendChild(card);
+      });
+    }
+
+    // Filter functionality
+    searchInput.addEventListener("input", e => {
+      const val = e.target.value.toLowerCase();
+      const filtered = demoPatients.filter(p =>
+        `${p.first_name} ${p.middle_name} ${p.last_name}`.toLowerCase().includes(val)
+      );
+      renderPatients(filtered);
+    });
+
+    // Initial render
+    renderPatients(demoPatients);
+  </script>
+</body>
+</html>

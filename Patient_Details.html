@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+      } catch (e) {}
+    })();
+  </script>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/Patient_Details.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <title>Patient Details</title>
+
+  <style>
+    .Tab-Content { display: none; }
+    .Tab-Content.active { display: block; }
+  </style>
+</head>
+
+<body>
+  <div class="Header">
+    <button onclick="location.href='index.html'" class="back-btn">
+      <i class='bx bx-left-arrow-alt'></i>
+    </button>
+
+    <h1 id="patientName">Test Dummy</h1>
+
+    <div class="Tab-Bar">
+      <button class="Tab-Link active" onclick="openTab(event, 'PatientChart')">Patient Chart</button>
+      <button class="Tab-Link" onclick="openTab(event, 'Photos')">Images</button>
+    </div>
+  </div>
+
+  <section class="Tab-container">
+    <!-- PATIENT CHART TAB -->
+    <div id="PatientChart" class="Tab-Content active">
+      <section class="Tooth-Chart">
+  <h2>Dental Chart</h2>
+
+  <div class="teeth upper">
+    <h3>Upper Jaw</h3>
+    <div class="quadrant" id="upper-right">
+      <div class="tooth" data-tooth="18">18<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="17">17<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="16">16<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="15">15<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="14">14<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="13">13<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="12">12<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="11">11<div class="fixed-btn" title="Toggle filling">✔</div></div>
+    </div>
+
+    <div class="quadrant" id="upper-left">
+      <div class="tooth" data-tooth="21">21<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="22">22<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="23">23<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="24">24<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="25">25<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="26">26<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="27">27<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="28">28<div class="fixed-btn" title="Toggle filling">✔</div></div>
+    </div>
+  </div>
+
+  <div class="teeth lower">
+    <h3>Lower Jaw</h3>
+    <div class="quadrant" id="lower-right">
+      <div class="tooth" data-tooth="48">48<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="47">47<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="46">46<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="45">45<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="44">44<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="43">43<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="42">42<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="41">41<div class="fixed-btn" title="Toggle filling">✔</div></div>
+    </div>
+
+    <div class="quadrant" id="lower-left">
+      <div class="tooth" data-tooth="31">31<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="32">32<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="33">33<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="34">34<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="35">35<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="36">36<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="37">37<div class="fixed-btn" title="Toggle filling">✔</div></div>
+      <div class="tooth" data-tooth="38">38<div class="fixed-btn" title="Toggle filling">✔</div></div>
+    </div>
+  </div>
+
+  <div class="condition-toolbar">
+    <button class="condition" data-condition="caries">Caries</button>
+    <button class="condition" data-condition="pulpitis">pulpitis</button>
+    <button class="condition" data-condition="periodontitis">periodontitis</button>
+    <button class="condition" data-condition="periodontitis_gum">periodontitis gum</button>
+    <button class="condition" data-condition="root">root</button>
+    <button class="condition" data-condition="obturate">obturate</button>
+    <button class="condition" data-condition="implant">implant</button>
+    <button class="condition" data-condition="fracture">fracture</button>
+    <button class="condition" data-condition="missing">missing</button>
+    <button class="condition" data-condition="crown">crown</button>
+  </div>
+    <button class="condition" data-condition="clear">clear</button>
+    <button id="save-chart" class="save-btn">Save</button>
+</section>
+
+
+      <!-- Visits Section -->
+      <section class="Visitations-Section">
+        <div class="visit-header">
+          <h2>Visits</h2>
+          <button id="add-visit" class="add-btn">+ New visit</button>
+        </div>
+
+        <form id="visit-form-horizontal" class="visit-form-horizontal" style="display:none;">
+          <input type="date" name="visit_date" required>
+          <input type="text" name="tooth_number" placeholder="Tooth number" required>
+          <input type="text" name="diagnosis" placeholder="Diagnosis" required>
+          <input type="text" name="treatment" placeholder="Treatment">
+          <input type="text" name="procedure_used" placeholder="Procedure">
+          <input type="text" name="notes" placeholder="Notes">
+          <button type="submit">Add</button>
+          <button type="button" id="cancel-visit-btn">Cancel</button>
+        </form>
+
+        <table class="visitation-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Tooth</th>
+              <th>Diagnosis</th>
+              <th>Treatment</th>
+              <th>Procedure</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="visits-body">
+            <tr>
+              <td>2025-05-20</td>
+              <td>14</td>
+              <td>Caries</td>
+              <td>Filling</td>
+              <td>Composite</td>
+              <td>Follow-up next month</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- PHOTOS TAB -->
+    <div id="Photos" class="Tab-Content">
+      <div id="photo-gallery" class="photo-gallery">
+        <img src="patient_photos/1_test1_test_meow.png" alt="Patient Photo" class="photo-thumb">
+        <img src="patient_photos/1_test1_test_meow.png" alt="Patient Photo" class="photo-thumb">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // TAB SWITCHING
+    function openTab(evt, tabId) {
+      const contents = document.querySelectorAll(".Tab-Content");
+      const links = document.querySelectorAll(".Tab-Link");
+      contents.forEach(c => c.classList.remove("active"));
+      links.forEach(l => l.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // ===== TOOTH CHART LOGIC =====
+document.addEventListener("DOMContentLoaded", () => {
+  let selectedTeeth = new Set();
+
+  const conditionButtons = document.querySelectorAll(".condition");
+  const teeth = document.querySelectorAll(".tooth");
+
+  // === Tooth selection ===
+  teeth.forEach(tooth => {
+    tooth.addEventListener("click", () => {
+      tooth.classList.toggle("selected");
+      const id = tooth.dataset.tooth;
+      if (selectedTeeth.has(id)) selectedTeeth.delete(id);
+      else selectedTeeth.add(id);
+    });
+
+    // === Fixed button inside tooth ===
+    const fixedBtn = tooth.querySelector(".fixed-btn");
+    if (fixedBtn) {
+      fixedBtn.addEventListener("click", e => {
+        e.stopPropagation(); // prevent selecting the tooth
+        tooth.classList.toggle("fixed");
+
+        if (tooth.classList.contains("fixed")) {
+          tooth.removeAttribute("data-condition");
+          tooth.title = "Filling";
+        } else {
+          tooth.title = "";
+        }
+      });
+    }
+  });
+
+  // === Apply condition after selection ===
+  conditionButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const condition = btn.dataset.condition;
+
+      conditionButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      selectedTeeth.forEach(id => {
+        const tooth = document.querySelector(`[data-tooth='${id}']`);
+        if (condition === "clear") {
+          tooth.removeAttribute("data-condition");
+          tooth.title = "";
+          tooth.classList.remove("fixed");
+        } else if (!tooth.classList.contains("fixed")) {
+          tooth.dataset.condition = condition;
+          tooth.title = getConditionName(condition);
+        }
+        tooth.classList.remove("selected");
+      });
+
+      selectedTeeth.clear();
+    });
+  });
+
+  // === Helper to translate condition names ===
+  function getConditionName(key) {
+    const map = {
+      caries: "Caries",
+      crown: "Crown",
+      filling: "Filling",
+      missing: "Missing tooth",
+      implant: "Implant",
+      pulpitis: "Pulpitis",
+      periodontitis: "Periodontitis",
+      periodontitis_gum: "Gum Disease",
+      root: "Root",
+      obturate: "Obturation",
+      fracture: "Fracture",
+      clear: "Clear"
+    };
+    return map[key] || "Unknown";
+  }
+
+  // === Fake Save button logic (local use) ===
+  const saveBtn = document.getElementById("save-chart");
+  if (saveBtn) {
+    saveBtn.addEventListener("click", () => {
+      const chartData = [];
+      document.querySelectorAll(".tooth").forEach(t => {
+        if (t.classList.contains("fixed")) {
+          chartData.push({ tooth: t.dataset.tooth, condition: "filling" });
+        } else if (t.dataset.condition) {
+          chartData.push({ tooth: t.dataset.tooth, condition: t.dataset.condition });
+        }
+      });
+
+      console.log("🦷 Current Chart Data:", chartData);
+      alert("Chart saved locally (check console).");
+    });
+  }
+});
+
+
+    // ===== VISITATIONS LOGIC =====
+    const addVisitBtn = document.getElementById("add-visit");
+    const visitForm = document.getElementById("visit-form-horizontal");
+    const cancelBtn = document.getElementById("cancel-visit-btn");
+    const visitsBody = document.getElementById("visits-body");
+
+    addVisitBtn.addEventListener("click", () => {
+      visitForm.style.display = "flex";
+      addVisitBtn.style.display = "none";
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      visitForm.reset();
+      visitForm.style.display = "none";
+      addVisitBtn.style.display = "block";
+    });
+
+    visitForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(visitForm);
+      const newRow = document.createElement("tr");
+
+      newRow.innerHTML = `
+        <td>${formData.get("visit_date")}</td>
+        <td>${formData.get("tooth_number")}</td>
+        <td>${formData.get("diagnosis")}</td>
+        <td>${formData.get("treatment")}</td>
+        <td>${formData.get("procedure_used")}</td>
+        <td>${formData.get("notes")}</td>
+      `;
+
+      visitsBody.prepend(newRow);
+      visitForm.reset();
+      visitForm.style.display = "none";
+      addVisitBtn.style.display = "block";
+    });
+  </script>
+</body>
+</html>
+
