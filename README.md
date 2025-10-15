@@ -1,6 +1,7 @@
 # 🦷 Dental Management System
 
-Web application for managing patient records, dental charts, visitations.
+Web application for managing patient records, dental charts, visitations.  
+<i> <b>!Warning!</b> Keep in mind that the live demo is made with a static HTML including the very basic functionality needed. There will be differences between the actual project and the static version.</i>
 
 ---
 
