@@ -31,7 +31,7 @@
   <!-- Filter/search bar -->
   <div class="filter-bar" aria-label="Filters">
     <input type="text" id="searchInput" placeholder="Search by name..." autocomplete="off" />
-    <button class="add-btn" onclick="window.location.href='add_patient.html'">
+    <button class="add-btn" onclick="window.location.href='Add_Patient.html'">
       <i class='bx bx-plus'></i>
     </button>
   </div>
@@ -100,8 +100,8 @@
             <span>${p.gender}</span>
             <span>${p.age}г.</span>
           </div>
-          <div class="phone"><strong>Телефон:</strong> ${p.phone}</div>
-          <button onclick="window.location.href='patient_details.html?id=${p.id}'">Детайли →</button>
+          <div class="phone"><strong>Phone:</strong> ${p.phone}</div>
+          <button onclick="window.location.href='Patient_Details.html'">Details →</button>
         `;
         patientsDisplay.appendChild(card);
       });
