@@ -41,7 +41,7 @@
     <!-- Fallback: server-side rendering if JS is disabled -->
     <main>
       <?php
-      $sql = "SELECT first_name, middle_name, last_name, gender, age, phone FROM patients ORDER BY last_name";
+      $sql = "SELECT id, first_name, middle_name, last_name, egn, gender, age, phone FROM patients ORDER BY last_name";
       $result = $conn->query($sql);
       if ($result && $result->num_rows > 0):
         while ($row = $result->fetch_assoc()): ?>
@@ -51,6 +51,7 @@
               <span><?= htmlspecialchars($row['gender']) ?></span>
               <span><?= htmlspecialchars($row['age']) ?>г.</span>
             </div>
+            <div class="egn"><strong>ЕГН:</strong> <?= htmlspecialchars($row['egn']) ?></div>
             <div class="phone"><strong>Phone:</strong> <?= htmlspecialchars($row['phone']) ?></div>
             <button onclick="location.href='Patient_Details.php?id=<?= urlencode($row['id']) ?>'">Details -></button>
           </div>

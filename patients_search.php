@@ -14,25 +14,26 @@ $q = isset($_GET['q']) ? trim($_GET['q']) : '';
 
 try {
     if ($q === '') {
-        // Return all (or limit) when empty — adjust LIMIT as needed
-        $sql = "SELECT id, first_name, middle_name, last_name, gender, age, phone
+        // Return all (or limited)
+        $sql = "SELECT id, first_name, middle_name, last_name, gender, age, phone, egn
                 FROM patients
                 ORDER BY last_name
                 LIMIT 1000";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     } else {
-        // Search by full name or first/last name parts
+        // Add EGN search capability
         $param = '%' . $q . '%';
-        $sql = "SELECT id, first_name, middle_name, last_name, gender, age, phone
+        $sql = "SELECT id, first_name, middle_name, last_name, gender, age, phone, egn
                 FROM patients
                 WHERE CONCAT_WS(' ', first_name, middle_name, last_name) LIKE ?
                    OR first_name LIKE ?
                    OR last_name LIKE ?
+                   OR egn LIKE ?
                 ORDER BY last_name
                 LIMIT 500";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sss', $param, $param, $param);
+        $stmt->bind_param('ssss', $param, $param, $param, $param);
         $stmt->execute();
     }
 
@@ -44,6 +45,7 @@ try {
 
     echo json_encode($rows, JSON_UNESCAPED_UNICODE);
 } catch (Exception $e) {
-    // On error, return empty array (do not leak DB errors)
+    // On error, return empty array (don’t leak DB errors)
     echo json_encode([]);
 }
+?>
