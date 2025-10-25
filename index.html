@@ -30,8 +30,8 @@
 
   <!-- Filter/search bar -->
   <div class="filter-bar" aria-label="Filters">
-    <input type="text" id="searchInput" placeholder="Search by name..." autocomplete="off" />
-    <button class="add-btn" onclick="window.location.href='AddPatient.html'">
+    <input type="text" id="searchInput" placeholder="Search by name or ЕГН..." autocomplete="off" />
+    <button class="add-btn" onclick="window.location.href='add_patient.html'">
       <i class='bx bx-plus'></i>
     </button>
   </div>
@@ -47,7 +47,7 @@
   <script src="JSScripts/ThemeSwitcher.js"></script>
 
   <script>
-    // --- Demo patient data (for static demo) ---
+    // --- Demo patient data (static) ---
     const demoPatients = [
       {
         id: 1,
@@ -56,6 +56,7 @@
         last_name: "Dummy",
         gender: "Female",
         age: 37,
+        egn: "9812314567",
         phone: "0888 123 456"
       },
       {
@@ -65,6 +66,7 @@
         last_name: "Dummy",
         gender: "Female",
         age: 30,
+        egn: "0021345678",
         phone: "0877 654 321"
       },
       {
@@ -74,6 +76,7 @@
         last_name: "Dummy",
         gender: "Male",
         age: 44,
+        egn: "7910243345",
         phone: "0899 111 222"
       }
     ];
@@ -100,6 +103,7 @@
             <span>${p.gender}</span>
             <span>${p.age}г.</span>
           </div>
+          <div class="egn"><strong>EGN:</strong> ${p.egn}</div>
           <div class="phone"><strong>Phone:</strong> ${p.phone}</div>
           <button onclick="window.location.href='PatientDetails.html'">Details →</button>
         `;
@@ -107,11 +111,12 @@
       });
     }
 
-    // Filter functionality
+    // Filter by name or ЕГН
     searchInput.addEventListener("input", e => {
       const val = e.target.value.toLowerCase();
       const filtered = demoPatients.filter(p =>
-        `${p.first_name} ${p.middle_name} ${p.last_name}`.toLowerCase().includes(val)
+        `${p.first_name} ${p.middle_name} ${p.last_name}`.toLowerCase().includes(val) ||
+        p.egn.toLowerCase().includes(val)
       );
       renderPatients(filtered);
     });

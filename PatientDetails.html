@@ -157,6 +157,11 @@
         <img src="patient_photos/1_test1_test_meow.png" alt="Patient Photo" class="photo-thumb">
         <img src="patient_photos/1_test1_test_meow.png" alt="Patient Photo" class="photo-thumb">
       </div>
+      <!-- Image Modal (Lightbox) -->        
+      <div id="imageModal" class="image-modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Enlarged photo">
+      </div>
     </div>
   </section>
 
@@ -305,6 +310,33 @@ document.addEventListener("DOMContentLoaded", () => {
       addVisitBtn.style.display = "block";
     });
   </script>
+  <script>
+  // Simple image modal/lightbox
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".image-modal .close");
+
+  document.querySelectorAll(".photo-thumb").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Close when clicking outside the image
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  // Close with ESC key
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") modal.style.display = "none";
+  });
+</script>
+
 </body>
 </html>
-
