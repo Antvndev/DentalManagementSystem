@@ -264,6 +264,12 @@ HTML;
         ?>
       </div>
     </div> <!-- END Photos -->
+    <!-- Image Preview Modal -->
+    <div id="imageModal" class="image-modal" style="display:none;">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" alt="Full-size image">
+    </div>
+
   </section> <!-- END Tab-container -->
 </body>
 </html>
@@ -272,3 +278,4 @@ HTML;
 <script src="JSScripts/ToothChart.js"></script>
 <script src="JSScripts/Visitations.js"></script>
 <script src="JSScripts/ThemeSwitcher.js"></script>
+<script src="JSScripts/EnlargeImage.js"></script>
