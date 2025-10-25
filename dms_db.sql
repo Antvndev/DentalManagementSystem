@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2025 at 03:58 PM
+-- Generation Time: Oct 25, 2025 at 01:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,6 +64,7 @@ CREATE TABLE `patients` (
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) NOT NULL,
+  `egn` varchar(10) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `age` int(3) NOT NULL,
   `phone` varchar(20) DEFAULT NULL
@@ -73,13 +74,13 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `age`, `phone`) VALUES
-(1, 'test1', 'test', 'test', 'Male', 34, '1234567890'),
-(2, 'test2', 'test', 'test', 'Male', 23, '1234567890'),
-(3, 'test3', 'test', 'test', 'Male', 76, '1234567890'),
-(4, 'test4', 'test', 'test', 'Female', 35, '1234567890'),
-(5, 'test5', 'test', 'test', 'Female', 54, '1234567890'),
-(6, 'test6', 'test', 'test', 'Male', 76, '1234567890');
+INSERT INTO `patients` (`id`, `first_name`, `middle_name`, `last_name`, `egn`, `gender`, `age`, `phone`) VALUES
+(1, 'test1', 'test', 'test', '1970022093', 'Male', 34, '1234567890'),
+(2, 'test2', 'test', 'test', '1960031232', 'Male', 23, '1234567890'),
+(3, 'test3', 'test', 'test', '1939012528', 'Male', 76, '1234567890'),
+(4, 'test4', 'test', 'test', '1983050576', 'Female', 35, '1234567890'),
+(5, 'test5', 'test', 'test', '1938082666', 'Female', 54, '1234567890'),
+(6, 'test6', 'test', 'test', '1960011530', 'Male', 76, '1234567890');
 
 -- --------------------------------------------------------
 
