@@ -4,11 +4,16 @@
 :root[data-theme="light"] {
   --text-contrast: hsl(0, 0%, 100%);
   --text: hsl(255, 15%, 5%);
+  --text: hsl(255, 15%, 5%);
   --background: hsl(260, 17%, 93%);
   --primary: hsl(255, 52%, 54%);
   --secondary: hsl(255, 52%, 70%);
   --accent: hsl(255, 83%, 64%);
+  --button-backgorund: hsl(0, 0%, 0%);
+  --button-color: hsl(0, 0%, 100%);
+  --shadow-color: hsl(0, 0%, 0%, 0.1);
 }
+
 :root[data-theme="dark"] {
   --text-contrast: hsl(0, 0%, 0%);
   --text: hsl(255, 14%, 95%);
@@ -16,6 +21,9 @@
   --primary: hsl(255, 52%, 46%);
   --secondary: hsl(255, 52%, 30%);
   --accent: hsl(255, 83%, 36%);
+  --button-backgorund: hsl(0, 0%, 100%);
+  --button-color: hsl(0, 0%, 0%);
+  --shadow-color: hsl(0, 0%, 99%, 0.1);
 }
 
 /* ==========================
