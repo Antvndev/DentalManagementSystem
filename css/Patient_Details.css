@@ -2,24 +2,38 @@
    Theme Variables
 ========================== */
 :root[data-theme="light"] {
-  --text: hsl(255, 20%, 8%);
+  --text: hsl(255, 15%, 5%);
   --text-contrast: hsl(0, 0%, 100%);
-  --background: hsl(270, 33%, 99%);
-  --primary: hsl(255, 52%, 54%);
-  --secondary: hsl(255, 67%, 70%);
-  --accent: hsl(255, 83%, 64%);
+  --background: hsl(260, 17%, 96%);
+
+  /* MAIN BRAND COLOR – strong purple */
+  --primary: hsl(260, 60%, 50%);
+
+  /* SOFT SUPPORTING COLOR – muted lavender */
+  --secondary: hsl(260, 35%, 75%);
+
+  /* ATTENTION COLOR – brighter magenta/pink */
+  --accent: hsl(295, 75%, 60%);
+
   --button-backgorund: hsl(0, 0%, 0%);
   --button-color: hsl(0, 0%, 100%);
   --shadow-color: hsl(0, 0%, 0%, 0.1);
 }
 
 :root[data-theme="dark"] {
-  --text: hsl(255, 20%, 92%);
   --text-contrast: hsl(0, 0%, 0%);
-  --background: hsl(300, 20%, 1%);
-  --primary: hsl(255, 52%, 46%);
-  --secondary: hsl(255, 67%, 30%);
-  --accent: hsl(255, 83%, 36%);
+  --text: hsl(255, 14%, 95%);
+  --background: hsl(260, 16%, 7%);
+
+  /* PRIMARY stays strong but slightly darker for dark mode */
+  --primary: hsl(260, 60%, 60%);
+
+  /* SECONDARY becomes deeper lavender */
+  --secondary: hsl(260, 35%, 40%);
+
+  /* ACCENT shifts to a richer magenta for clarity on dark bg */
+  --accent: hsl(295, 75%, 55%);
+
   --button-backgorund: hsl(0, 0%, 100%);
   --button-color: hsl(0, 0%, 0%);
   --shadow-color: hsl(0, 0%, 99%, 0.1);
@@ -28,6 +42,10 @@
 /* ==========================
    Layout
 ========================== */
+.example{
+  position: absolute;
+  top: 0.125rem;
+}
 /* Header container as row */
 .Header {
     display: flex;
